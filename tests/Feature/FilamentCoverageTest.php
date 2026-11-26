@@ -3,15 +3,14 @@
 declare(strict_types=1);
 
 use Filament\Panel;
-use Filament\Schemas\Schema;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Liberu\Accounting\CashCollectionAssistantFilament\CashCollectionAssistantFilamentPlugin;
 use Liberu\Accounting\CashCollectionAssistantFilament\CashCollectionAssistantFilamentServiceProvider;
 
 it('registers and configures accounting-cash-collection-assistant-filament filament resources', function (): void {
     $provider = $this->app->register(CashCollectionAssistantFilamentServiceProvider::class, force: true);
-    if (method_exists($provider, 'boot')) { $provider->boot(); }
+    if (method_exists($provider, 'boot')) {
+        $provider->boot();
+    }
     expect($provider)->toBeInstanceOf(CashCollectionAssistantFilamentServiceProvider::class);
     $plugin = CashCollectionAssistantFilamentPlugin::make();
     $panel = Panel::make()->id('test-accounting-cash-collection-assistant-filament');
